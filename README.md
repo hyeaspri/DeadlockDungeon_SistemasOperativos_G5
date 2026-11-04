@@ -3,6 +3,7 @@
 
 **Proyecto:** Sistemas Operativos  
 **Grupo:** 5
+
 **Integrantes:**
 - Heidy Valeria Asprilla Rubiano
 - Daniela Rodriguez Reyes
