@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_deadlock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_deadlock",
+  "parent":{
+    "name":"Deadlock_Dungeon",
+    "path":"Deadlock_Dungeon.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

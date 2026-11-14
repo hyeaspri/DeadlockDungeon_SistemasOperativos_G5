@@ -1,0 +1,19 @@
+{
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_control","order":2,"path":"objects/obj_control/obj_control.yy",},
+    {"name":"scr_deadlock","order":1,"path":"scripts/scr_deadlock/scr_deadlock.yy",},
+    {"name":"snd_asignar","order":11,"path":"sounds/snd_asignar/snd_asignar.yy",},
+    {"name":"snd_bloqueo","order":13,"path":"sounds/snd_bloqueo/snd_bloqueo.yy",},
+    {"name":"snd_clic","order":10,"path":"sounds/snd_clic/snd_clic.yy",},
+    {"name":"snd_error","order":12,"path":"sounds/snd_error/snd_error.yy",},
+    {"name":"snd_musica","order":9,"path":"sounds/snd_musica/snd_musica.yy",},
+    {"name":"snd_victoria","order":14,"path":"sounds/snd_victoria/snd_victoria.yy",},
+    {"name":"spr_caballero","order":4,"path":"sprites/spr_caballero/spr_caballero.yy",},
+    {"name":"spr_escudo","order":7,"path":"sprites/spr_escudo/spr_escudo.yy",},
+    {"name":"spr_fondo","order":3,"path":"sprites/spr_fondo/spr_fondo.yy",},
+    {"name":"spr_llave","order":6,"path":"sprites/spr_llave/spr_llave.yy",},
+    {"name":"spr_mago","order":5,"path":"sprites/spr_mago/spr_mago.yy",},
+    {"name":"spr_puerta","order":8,"path":"sprites/spr_puerta/spr_puerta.yy",},
+  ],
+}
