@@ -279,6 +279,4 @@ Ver [`pruebas/registro_pruebas.md`](pruebas/registro_pruebas.md). Ahí se distin
 - Animar el movimiento de los personajes hacia la salida.
 - Explorar la ejecución de los scripts desde el juego.
 
-## Licencia
 
-Ver [LICENSE](LICENSE).
