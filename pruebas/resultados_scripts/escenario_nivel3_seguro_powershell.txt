@@ -1,0 +1,27 @@
+==============================================================
+ DEADLOCK DUNGEON - Analisis de escenario (PowerShell / Windows)
+==============================================================
+ Archivo : escenarios/escenario_nivel3_seguro.txt
+ Nivel   : 3
+ Fecha   : 2026-11-13 23:17:08
+ Sistema : Unix 6.18.44.470
+--------------------------------------------------------------
+ Recurso        Total   Asignado   Disponible
+ Llave              1          1            0
+ Escudo             1          1            0
+--------------------------------------------------------------
+ Proceso      Estado      Asignado     Maximo       Necesidad   
+ Caballero    ACTIVO      1 1          1 1          0 0         
+ Mago         ACTIVO      0 0          1 1          1 1         
+--------------------------------------------------------------
+ Algoritmo de seguridad (Trabajo inicial = Disponible = 0 0)
+   Paso 1: Caballero puede terminar -> libera recursos. Trabajo = 1 1
+   Paso 2: Mago puede terminar -> libera recursos. Trabajo = 1 1
+--------------------------------------------------------------
+ RESULTADO: ESTADO SEGURO (no hay interbloqueo)
+ Secuencia segura: Caballero -> Mago
+--------------------------------------------------------------
+ Resultado reportado por el juego : SEGURO
+ Resultado del script             : SEGURO
+ Coinciden: SI
+==============================================================

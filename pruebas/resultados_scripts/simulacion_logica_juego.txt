@@ -1,0 +1,164 @@
+
+## N1 inicio
+ estado: jugando | puntos: 0
+ mensaje: Nivel cargado. Observa el estado del sistema arriba a la derecha.
+ analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
+
+## N1 escudo->caballero (debe rechazar)
+ estado: jugando | puntos: 0
+ mensaje: Solicitud rechazada: Caballero no necesita Escudo.
+ analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
+
+## N1 asignado
+ estado: jugando | puntos: 0
+ mensaje: Recurso Escudo asignado a Mago.
+ analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel1_completado.txt
+
+## N1 ejecutar
+ estado: superado | puntos: 100
+ mensaje: Todos los procesos terminaron y salieron. +100 puntos.
+Pulsa SIGUIENTE para responder la pregunta del nivel.
+ analisis: {"seguro":true,"secuencia":[],"bloqueados":[]}
+
+## N2 inicio
+ estado: jugando | puntos: 100
+ mensaje: Nivel cargado. Observa el estado del sistema arriba a la derecha.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel2_interbloqueo.txt
+
+## N2 ejecutar
+ estado: jugando | puntos: 100
+ mensaje: INTERBLOQUEO DETECTADO (espera circular):
+Caballero tiene Llave y espera Escudo (lo tiene Mago).
+Mago tiene Escudo y espera Llave (lo tiene Caballero).
+Ninguno puede continuar. Expropia un recurso para recuperarte.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel2_seguro.txt
+
+## N2 tras expropiar escudo y darlo al caballero
+ estado: jugando | puntos: 100
+ mensaje: Caballero termino y libero sus recursos.
+No hay interbloqueo, pero faltan recursos por asignar.
+Secuencia segura sugerida: Mago
+ analisis: {"seguro":true,"secuencia":[1],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel2_completado.txt
+
+## N2 mago
+ estado: superado | puntos: 170
+ mensaje: Todos los procesos terminaron y salieron. +70 puntos.
+Pulsa SIGUIENTE para responder la pregunta del nivel.
+ analisis: {"seguro":true,"secuencia":[],"bloqueados":[]}
+
+## N3 llave->cab
+ estado: jugando | puntos: 170
+ mensaje: Recurso Llave asignado a Caballero.
+ analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
+
+## N3 escudo->mago
+ estado: jugando | puntos: 170
+ mensaje: Recurso Escudo asignado a Mago.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_interbloqueo.txt
+
+## N3 ejecutar (derrota)
+ estado: derrota | puntos: 170
+ mensaje: INTERBLOQUEO DETECTADO (espera circular):
+Caballero tiene Llave y espera Escudo (lo tiene Mago).
+Mago tiene Escudo y espera Llave (lo tiene Caballero).
+Ninguno puede continuar. En este nivel debias PREVENIRLO. Pulsa R para reintentar.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_seguro.txt
+
+## N3 cab primero
+ estado: jugando | puntos: 170
+ mensaje: Caballero termino y libero sus recursos.
+No hay interbloqueo, pero faltan recursos por asignar.
+Secuencia segura sugerida: Mago
+ analisis: {"seguro":true,"secuencia":[1],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_completado.txt
+
+## N3 fin
+ estado: superado | puntos: 270
+ mensaje: Todos los procesos terminaron y salieron. +100 puntos.
+Pulsa SIGUIENTE para responder la pregunta del nivel.
+ analisis: {"seguro":true,"secuencia":[],"bloqueados":[]}
+
+## PREGUNTAS ENTRE NIVELES
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel1_completado.txt
+ N1 responde opcion 0 (correcta): puntos=120 aciertos=1
+ N1 segundo clic se ignora: puntos=120
+ continuar -> nivel 2 jugando
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel2_seguro.txt
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel2_completado.txt
+ N2 responde opcion 0 (incorrecta): puntos sin cambio=true aciertos=1
+ continuar -> nivel 3
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_seguro.txt
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_completado.txt
+ N3 correcta y continuar -> fin | puntos 340 | aciertos 2/3
+ Sonidos reproducidos: musica, error, asignar, victoria, bloqueo, clic
+
+## ARCHIVOS EXPORTADOS
+--- escenario_nivel1_completado.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;1
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,0;TERMINADO
+PROCESO;Mago;0,0;0,1;TERMINADO
+JUEGO;COMPLETADO
+
+--- escenario_nivel2_interbloqueo.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;2
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;1,0;1,1;ACTIVO
+PROCESO;Mago;0,1;1,1;ACTIVO
+JUEGO;INTERBLOQUEO
+
+--- escenario_nivel2_seguro.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;2
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,1;TERMINADO
+PROCESO;Mago;0,0;1,1;ACTIVO
+JUEGO;SEGURO
+
+--- escenario_nivel2_completado.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;2
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,1;TERMINADO
+PROCESO;Mago;0,0;1,1;TERMINADO
+JUEGO;COMPLETADO
+
+--- escenario_nivel3_interbloqueo.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;3
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;1,0;1,1;ACTIVO
+PROCESO;Mago;0,1;1,1;ACTIVO
+JUEGO;INTERBLOQUEO
+
+--- escenario_nivel3_seguro.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;3
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,1;TERMINADO
+PROCESO;Mago;0,0;1,1;ACTIVO
+JUEGO;SEGURO
+
+--- escenario_nivel3_completado.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;3
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,1;TERMINADO
+PROCESO;Mago;0,0;1,1;TERMINADO
+JUEGO;COMPLETADO
+
