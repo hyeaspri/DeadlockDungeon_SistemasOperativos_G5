@@ -1,0 +1,7 @@
+# Escenario exportado por Deadlock Dungeon
+NIVEL;1
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;0,0;1,0;TERMINADO
+PROCESO;Mago;0,0;0,1;TERMINADO
+JUEGO;COMPLETADO

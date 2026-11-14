@@ -1,0 +1,7 @@
+# Nivel 2 - El intercambio imposible (espera circular)
+NIVEL;2
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;1,0;1,1;ACTIVO
+PROCESO;Mago;0,1;1,1;ACTIVO
+JUEGO;INTERBLOQUEO

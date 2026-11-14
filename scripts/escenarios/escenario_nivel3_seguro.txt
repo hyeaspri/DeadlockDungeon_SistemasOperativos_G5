@@ -1,0 +1,7 @@
+# Nivel 3 - La salida segura (Caballero recibe ambos recursos primero)
+NIVEL;3
+RECURSOS;Llave,Escudo
+TOTAL;1,1
+PROCESO;Caballero;1,1;1,1;ACTIVO
+PROCESO;Mago;0,0;1,1;ACTIVO
+JUEGO;SEGURO
