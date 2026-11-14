@@ -138,10 +138,11 @@ Deadlock-Dungeon/
 │   ├── resultados_scripts/      Salidas reales de los scripts
 │   └── capturas/                Capturas del juego funcionando
 └── recursos/
-    ├── imagenes/                Sprites pixel art
-    ├── sonidos/                 Música y efectos de sonido
-    ├── generar_sprites.py       Script que genera los sprites
-    └── generar_audio.py         Script que genera la música y los sonidos
+    └── imagenes/                Recursos gráficos y de audio
+        ├── imagenes/            Sprites pixel art
+        ├── sonidos/             Música y efectos de sonido
+        ├── generar_sprites.py   Script que genera los sprites
+        └── generar_audio.py     Script que genera la música y los sonidos
 ```
 
 ## 9. Modelo de datos
@@ -268,8 +269,8 @@ Ver [`pruebas/registro_pruebas.md`](pruebas/registro_pruebas.md). Ahí se distin
 | Exportación del escenario a archivo | ✅ Implementada |
 | `analizar.sh` | ✅ Implementado y probado |
 | `analizar.ps1` | ✅ Implementado y probado |
-| Gráficos pixel art (mazmorra, caballero, mago, llave, escudo, puerta) | ✅ Implementados (`recursos/imagenes/`) |
-| Música y efectos de sonido | ✅ Implementados (`recursos/sonidos/`) |
+| Gráficos pixel art (mazmorra, caballero, mago, llave, escudo, puerta) | ✅ Implementados (`recursos/imagenes/imagenes/`) |
+| Música y efectos de sonido | ✅ Implementados (`recursos/imagenes/sonidos/`) |
 | Preguntas entre niveles | ✅ Implementadas (3 preguntas) |
 | Nivel con 3 procesos y 3 recursos | 🔜 Propuesto para la siguiente fase |
 
