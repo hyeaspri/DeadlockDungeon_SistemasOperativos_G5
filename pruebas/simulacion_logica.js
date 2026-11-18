@@ -16,7 +16,7 @@ vm.runInContext(fs.readFileSync(D+'scr_deadlock.gml','utf8'),ctx);
 vm.runInContext(fs.readFileSync(D+'obj_control_Create.gml','utf8'),ctx);
 const run=c=>vm.runInContext(c,ctx);
 const show=t=>{console.log('\n## '+t);console.log(' estado:',ctx.estado_juego,'| puntos:',ctx.puntos);console.log(' mensaje:',ctx.mensaje);
- const a=ctx.so_analizar(ctx.asignado,ctx.maximo,ctx.total,ctx.terminado,2,2);console.log(' analisis:',JSON.stringify(a));};
+ const a=ctx.so_analizar(ctx.asignado,ctx.maximo,ctx.total,ctx.terminado,ctx.num_proc,ctx.num_rec);console.log(' analisis:',JSON.stringify(a));};
 run('cargar_nivel(1)');show('N1 inicio');
 run('asignar(0,1)');show('N1 escudo->caballero (debe rechazar)');
 run('asignar(0,0)');run('asignar(1,1)');show('N1 asignado');
@@ -25,8 +25,20 @@ run('cargar_nivel(2)');show('N2 inicio');
 run('ejecutar()');show('N2 ejecutar');
 run('asignado[1][1]=0;expropiaciones+=1');run('asignar(0,1)');run('ejecutar()');show('N2 tras expropiar escudo y darlo al caballero');
 run('asignar(1,0)');run('asignar(1,1)');run('ejecutar()');show('N2 mago');
-run('cargar_nivel(3)');run('asignar(0,0)');show('N3 llave->cab');run('asignar(1,1)');show('N3 escudo->mago');run('ejecutar()');show('N3 ejecutar (derrota)');
+run('cargar_nivel(3)');run('asignar(0,0)');show('N3 llave->cab');run('asignar(1,1)');show('N3 escudo->mago (debe RECHAZARSE por la regla de orden)');run('asignar(0,1)');run('ejecutar()');show('N3 escudo->cab y ejecutar (Caballero sale)');
 run('cargar_nivel(3)');run('asignar(0,0)');run('asignar(0,1)');run('ejecutar()');show('N3 cab primero');run('asignar(1,0)');run('asignar(1,1)');run('ejecutar()');show('N3 fin');
+
+
+console.log('\n## NIVEL 4 (3 procesos, 3 recursos)');
+run('cargar_nivel(4)'); show('N4 inicio (solo Antorcha libre)');
+run('asignar(2,2)'); show('N4 Antorcha -> Arquero (debe quedar NO SEGURO)');
+run('ejecutar()'); show('N4 ejecutar (derrota por espera circular de 3)');
+run('cargar_nivel(4)'); run('asignar(1,2)'); show('N4 Antorcha -> Mago (sigue SEGURO)');
+run('ejecutar()'); show('N4 ejecutar: Mago termina');
+run('asignar(0,1)'); run('ejecutar()'); show('N4 Escudo -> Caballero, ejecutar: Caballero termina');
+run('asignar(2,0)'); run('asignar(2,2)'); run('ejecutar()'); show('N4 Llave y Antorcha -> Arquero, ejecutar: nivel superado');
+run('estado_juego="pregunta";respuesta=-1;responder(2);continuar();');
+console.log(' Pregunta N4 correcta y continuar ->', ctx.estado_juego);
 
 console.log('\n## PREGUNTAS ENTRE NIVELES');
 run('puntos=0;aciertos=0;cargar_nivel(1);asignar(0,0);asignar(1,1);ejecutar();estado_juego="pregunta";respuesta=-1;');
@@ -36,7 +48,7 @@ run('continuar()'); console.log(' continuar -> nivel', ctx.nivel, ctx.estado_jue
 run('cargar_nivel(2);asignado=[[0,0],[0,0]];asignar(0,0);asignar(0,1);ejecutar();asignar(1,0);asignar(1,1);ejecutar();estado_juego="pregunta";');
 const p2=ctx.puntos; run('responder(0)'); console.log(' N2 responde opcion 0 (incorrecta):', 'puntos sin cambio='+(ctx.puntos===p2), 'aciertos='+ctx.aciertos);
 run('continuar()'); console.log(' continuar -> nivel', ctx.nivel);
-run('asignar(0,0);asignar(0,1);ejecutar();asignar(1,0);asignar(1,1);ejecutar();estado_juego="pregunta";responder(2);continuar();');
+run('asignar(0,0);asignar(0,1);ejecutar();asignar(1,0);asignar(1,1);ejecutar();estado_juego="pregunta";responder(1);continuar();');
 console.log(' N3 correcta y continuar ->', ctx.estado_juego, '| puntos', ctx.puntos, '| aciertos', ctx.aciertos+'/3');
 console.log(' Sonidos reproducidos:', [...new Set(sonidos)].join(', '));
 console.log('\n## ARCHIVOS EXPORTADOS');for(const k in files){console.log('--- '+k);console.log(files[k]);}

@@ -1,0 +1,32 @@
+==============================================================
+ DEADLOCK DUNGEON - Analisis de escenario (Bash / Linux)
+==============================================================
+ Archivo : escenarios/escenario_nivel4_interbloqueo.txt
+ Nivel   : 4
+ Fecha   : 2026-11-17 20:16:18
+ Sistema : Linux 6.18.44-fc-v595
+--------------------------------------------------------------
+ Recurso        Total   Asignado   Disponible
+ Llave              1          1            0
+ Escudo             1          1            0
+ Antorcha           1          1            0
+--------------------------------------------------------------
+ Proceso      Estado      Asignado     Maximo       Necesidad   
+ Caballero    ACTIVO      1 0 0        1 1 0        0 1 0       
+ Mago         ACTIVO      0 1 0        0 1 1        0 0 1       
+ Arquero      ACTIVO      0 0 1        1 0 1        1 0 0       
+--------------------------------------------------------------
+ Algoritmo de seguridad (Trabajo inicial = Disponible = 0 0 0)
+--------------------------------------------------------------
+ RESULTADO: INTERBLOQUEO DETECTADO (estado no seguro)
+ Espera circular:
+   - Caballero tiene [ Llave ] y espera [ Escudo(lo tiene Mago) ]
+   - Mago tiene [ Escudo ] y espera [ Antorcha(lo tiene Arquero) ]
+   - Arquero tiene [ Antorcha ] y espera [ Llave(lo tiene Caballero) ]
+ Solucion sugerida: expropiar un recurso (recuperacion) o asignar
+ todos los recursos a un proceso primero (prevencion).
+--------------------------------------------------------------
+ Resultado reportado por el juego : INTERBLOQUEO
+ Resultado del script             : INTERBLOQUEO
+ Coinciden: SI
+==============================================================

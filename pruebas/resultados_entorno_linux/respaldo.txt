@@ -1,0 +1,17 @@
+[2026-11-17 20:17:24] RESPALDO OK: /opt/deadlock-dungeon/respaldos/respaldo_20261117_201724.tar.gz (5 archivos, 4.0K)
+ Respaldos disponibles:
+-rw-r--r-- 1 root root 576 Nov 17 20:17 respaldo_20261117_201724.tar.gz
+ Espacio libre en /: 30G
+--- Simulacion de falla: se borra escenario_nivel4_interbloqueo.txt ---
+escenario_nivel1_ejemplo.txt
+escenario_nivel2_interbloqueo.txt
+escenario_nivel3_seguro.txt
+escenario_nivel4_inicio.txt
+--- Restauracion ---
+[2026-11-17 20:17:24] RESTAURADO: /opt/deadlock-dungeon/respaldos/respaldo_20261117_201724.tar.gz -> /opt/deadlock-dungeon/escenarios (5 escenarios)
+escenario_nivel1_ejemplo.txt
+escenario_nivel2_interbloqueo.txt
+escenario_nivel3_seguro.txt
+escenario_nivel4_inicio.txt
+escenario_nivel4_interbloqueo.txt
+[2026-11-17 20:17:24] crontab no esta instalado. Linea para cron: 0 20 * * * bash /opt/deadlock-dungeon/scripts/respaldo.sh

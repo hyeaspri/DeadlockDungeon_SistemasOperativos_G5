@@ -1,0 +1,24 @@
+==================================================================
+ DEADLOCK DUNGEON - Monitoreo del sistema (Linux)
+==================================================================
+ Equipo     : vm
+ Sistema    : Ubuntu 24.04.5 LTS
+ Nucleos    : 2
+ Memoria    : 376Mi usados de 7.8Gi
+ Disco /    : 30G libres de 252G (30% usado)
+ Encendido  : up 3 minutes
+------------------------------------------------------------------
+ Hora        CPU%   RAM%   Disco%   Procesos
+ 20:17:22       0    4.7       30         71
+ 20:17:23       0    4.7       30         71
+ 20:17:24       0    4.7       30         71
+------------------------------------------------------------------
+ Los 5 procesos que mas memoria usan:
+  PID USER     %CPU %MEM COMMAND
+  110 root      1.0  2.3 claude
+   87 root      0.0  0.4 environment-man
+   75 root      0.0  0.3 rclone-filestor
+    1 root      0.1  0.0 process_api
+  374 root      0.0  0.0 ps
+==================================================================
+ Muestras guardadas en: /opt/deadlock-dungeon/logs/monitoreo_20261117_201721.csv

@@ -55,19 +55,19 @@ Pulsa SIGUIENTE para responder la pregunta del nivel.
  mensaje: Recurso Llave asignado a Caballero.
  analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
 
-## N3 escudo->mago
+## N3 escudo->mago (debe RECHAZARSE por la regla de orden)
  estado: jugando | puntos: 170
- mensaje: Recurso Escudo asignado a Mago.
- analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
-   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_interbloqueo.txt
+ mensaje: Solicitud rechazada por la REGLA DE ORDEN: Mago debe tener primero la Llave.
+Como todos piden los recursos en el mismo orden, nunca se forma una espera circular.
+ analisis: {"seguro":true,"secuencia":[0,1],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_seguro.txt
 
-## N3 ejecutar (derrota)
- estado: derrota | puntos: 170
- mensaje: INTERBLOQUEO DETECTADO (espera circular):
-Caballero tiene Llave y espera Escudo (lo tiene Mago).
-Mago tiene Escudo y espera Llave (lo tiene Caballero).
-Ninguno puede continuar. En este nivel debias PREVENIRLO. Pulsa R para reintentar.
- analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1]}
+## N3 escudo->cab y ejecutar (Caballero sale)
+ estado: jugando | puntos: 170
+ mensaje: Caballero termino y libero sus recursos.
+No hay interbloqueo, pero faltan recursos por asignar.
+Secuencia segura sugerida: Mago
+ analisis: {"seguro":true,"secuencia":[1],"bloqueados":[]}
    [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_seguro.txt
 
 ## N3 cab primero
@@ -84,6 +84,57 @@ Secuencia segura sugerida: Mago
 Pulsa SIGUIENTE para responder la pregunta del nivel.
  analisis: {"seguro":true,"secuencia":[],"bloqueados":[]}
 
+## NIVEL 4 (3 procesos, 3 recursos)
+
+## N4 inicio (solo Antorcha libre)
+ estado: jugando | puntos: 270
+ mensaje: Nivel cargado. Observa el estado del sistema arriba a la derecha.
+ analisis: {"seguro":true,"secuencia":[1,0,2],"bloqueados":[]}
+
+## N4 Antorcha -> Arquero (debe quedar NO SEGURO)
+ estado: jugando | puntos: 270
+ mensaje: Recurso Antorcha asignado a Arquero.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1,2]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel4_interbloqueo.txt
+
+## N4 ejecutar (derrota por espera circular de 3)
+ estado: derrota | puntos: 270
+ mensaje: INTERBLOQUEO DETECTADO (espera circular):
+Caballero tiene Llave y espera Escudo (lo tiene Mago).
+Mago tiene Escudo y espera Antorcha (lo tiene Arquero).
+Arquero tiene Antorcha y espera Llave (lo tiene Caballero).
+Ninguno puede continuar. En este nivel debias PREVENIRLO. Pulsa R para reintentar.
+ analisis: {"seguro":false,"secuencia":[],"bloqueados":[0,1,2]}
+
+## N4 Antorcha -> Mago (sigue SEGURO)
+ estado: jugando | puntos: 270
+ mensaje: Recurso Antorcha asignado a Mago.
+ analisis: {"seguro":true,"secuencia":[1,0,2],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel4_seguro.txt
+
+## N4 ejecutar: Mago termina
+ estado: jugando | puntos: 270
+ mensaje: Mago termino y libero sus recursos.
+No hay interbloqueo, pero faltan recursos por asignar.
+Secuencia segura sugerida: Caballero -> Arquero
+ analisis: {"seguro":true,"secuencia":[0,2],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel4_seguro.txt
+
+## N4 Escudo -> Caballero, ejecutar: Caballero termina
+ estado: jugando | puntos: 270
+ mensaje: Caballero termino y libero sus recursos.
+No hay interbloqueo, pero faltan recursos por asignar.
+Secuencia segura sugerida: Arquero
+ analisis: {"seguro":true,"secuencia":[2],"bloqueados":[]}
+   [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel4_completado.txt
+
+## N4 Llave y Antorcha -> Arquero, ejecutar: nivel superado
+ estado: superado | puntos: 370
+ mensaje: Todos los procesos terminaron y salieron. +100 puntos.
+Pulsa SIGUIENTE para responder la pregunta del nivel.
+ analisis: {"seguro":true,"secuencia":[],"bloqueados":[]}
+ Pregunta N4 correcta y continuar -> fin
+
 ## PREGUNTAS ENTRE NIVELES
    [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel1_completado.txt
  N1 responde opcion 0 (correcta): puntos=120 aciertos=1
@@ -95,7 +146,7 @@ Pulsa SIGUIENTE para responder la pregunta del nivel.
  continuar -> nivel 3
    [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_seguro.txt
    [debug] Escenario exportado en: C:/Users/x/AppData/Local/Deadlock_Dungeon/escenario_nivel3_completado.txt
- N3 correcta y continuar -> fin | puntos 340 | aciertos 2/3
+ N3 correcta y continuar -> jugando | puntos 340 | aciertos 2/3
  Sonidos reproducidos: musica, error, asignar, victoria, bloqueo, clic
 
 ## ARCHIVOS EXPORTADOS
@@ -135,15 +186,6 @@ PROCESO;Caballero;0,0;1,1;TERMINADO
 PROCESO;Mago;0,0;1,1;TERMINADO
 JUEGO;COMPLETADO
 
---- escenario_nivel3_interbloqueo.txt
-# Escenario exportado por Deadlock Dungeon
-NIVEL;3
-RECURSOS;Llave,Escudo
-TOTAL;1,1
-PROCESO;Caballero;1,0;1,1;ACTIVO
-PROCESO;Mago;0,1;1,1;ACTIVO
-JUEGO;INTERBLOQUEO
-
 --- escenario_nivel3_seguro.txt
 # Escenario exportado por Deadlock Dungeon
 NIVEL;3
@@ -160,5 +202,35 @@ RECURSOS;Llave,Escudo
 TOTAL;1,1
 PROCESO;Caballero;0,0;1,1;TERMINADO
 PROCESO;Mago;0,0;1,1;TERMINADO
+JUEGO;COMPLETADO
+
+--- escenario_nivel4_interbloqueo.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;4
+RECURSOS;Llave,Escudo,Antorcha
+TOTAL;1,1,1
+PROCESO;Caballero;1,0,0;1,1,0;ACTIVO
+PROCESO;Mago;0,1,0;0,1,1;ACTIVO
+PROCESO;Arquero;0,0,1;1,0,1;ACTIVO
+JUEGO;INTERBLOQUEO
+
+--- escenario_nivel4_seguro.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;4
+RECURSOS;Llave,Escudo,Antorcha
+TOTAL;1,1,1
+PROCESO;Caballero;0,0,0;1,1,0;TERMINADO
+PROCESO;Mago;0,0,0;0,1,1;TERMINADO
+PROCESO;Arquero;0,0,0;1,0,1;ACTIVO
+JUEGO;SEGURO
+
+--- escenario_nivel4_completado.txt
+# Escenario exportado por Deadlock Dungeon
+NIVEL;4
+RECURSOS;Llave,Escudo,Antorcha
+TOTAL;1,1,1
+PROCESO;Caballero;0,0,0;1,1,0;TERMINADO
+PROCESO;Mago;0,0,0;0,1,1;TERMINADO
+PROCESO;Arquero;0,0,0;1,0,1;TERMINADO
 JUEGO;COMPLETADO
 
