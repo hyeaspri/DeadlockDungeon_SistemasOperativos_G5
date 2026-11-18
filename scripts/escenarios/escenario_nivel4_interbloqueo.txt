@@ -1,0 +1,8 @@
+# Escenario exportado por Deadlock Dungeon
+NIVEL;4
+RECURSOS;Llave,Escudo,Antorcha
+TOTAL;1,1,1
+PROCESO;Caballero;1,0,0;1,1,0;ACTIVO
+PROCESO;Mago;0,1,0;0,1,1;ACTIVO
+PROCESO;Arquero;0,0,1;1,0,1;ACTIVO
+JUEGO;INTERBLOQUEO
