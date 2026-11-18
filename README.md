@@ -249,6 +249,10 @@ JUEGO;INTERBLOQUEO
 
 ### El juego
 
+**Opción rápida (sin instalar GameMaker):** descargar `Deadlock_Dungeon_v1.0.zip` desde la sección [Releases](https://github.com/hyeaspri/DeadlockDungeon_SistemasOperativos_G5/releases), descomprimir y abrir `Deadlock_Dungeon.exe`.
+
+**Desde el código fuente:**
+
 1. Instalar GameMaker (gratis para uso no comercial): https://gamemaker.io/
 2. Abrir `juego/Deadlock_Dungeon/Deadlock_Dungeon.yyp`.
 3. Ejecutar con el botón ▶ (o F5 / Fn + F5).
