@@ -311,34 +311,32 @@ Ver [`pruebas/registro_pruebas.md`](pruebas/registro_pruebas.md). Las capturas e
 
 | Prueba | Resultado |
 |---|---|
-| Lógica del juego (simulación de los 4 niveles, regla de orden y preguntas) | ✅ Correcta |
-| Juego en GameMaker (4 niveles, interbloqueo de 2 y 3 procesos, preguntas, victoria con 460 / 480 y 4 / 4 preguntas) | ✅ Correcto |
-| `analizar.ps1` (PowerShell 5.1) y `analizar.sh` (Git Bash y Ubuntu) con escenarios de 2 y 3 procesos | ✅ "Coinciden: SI" con el juego |
-| Monitoreo de `Runner.exe` | ✅ CPU ≈ 18 %, memoria 123,5 MB, 10 hilos, prioridad High |
-| Respaldo y tarea programada | ✅ 10 escenarios respaldados y verificados; tarea diaria a las 8:00 p. m. |
-| Recuperación ante fallos (Windows y Linux) | ✅ Escenario eliminado recuperado desde el respaldo |
+| Lógica del juego (simulación de los 4 niveles, regla de orden y preguntas) | Correcta |
+| Juego en GameMaker (4 niveles, interbloqueo de 2 y 3 procesos, preguntas, victoria con 460 / 480 y 4 / 4 preguntas) | Correcto |
+| `analizar.ps1` (PowerShell 5.1) y `analizar.sh` (Git Bash y Ubuntu) con escenarios de 2 y 3 procesos | "Coinciden: SI" con el juego |
+| Monitoreo de `Runner.exe` | CPU ≈ 18 %, memoria 123,5 MB, 10 hilos, prioridad High |
+| Respaldo y tarea programada | 10 escenarios respaldados y verificados; tarea diaria a las 8:00 p. m. |
+| Recuperación ante fallos (Windows y Linux) | Escenario eliminado recuperado desde el respaldo |
 
 ## 15. Estado actual del proyecto (versión final)
 
 | Componente | Estado |
 |---|---|
-| Lógica de detección y estado seguro (`scr_deadlock`) | ✅ Implementada y probada (2 y 3 procesos) |
-| Juego en GameMaker (menú, 4 niveles, asignación, mensajes, puntos, victoria/derrota) | ✅ Implementado. Ver capturas en `pruebas/capturas/` |
-| Nivel 3 de prevención (regla del orden) | ✅ Implementado |
-| Nivel 4 con 3 procesos y 3 recursos (algoritmo del banquero) | ✅ Implementado |
-| Animación de los personajes hacia la salida | ✅ Implementada |
-| Exportación del escenario a archivo | ✅ Implementada |
-| `analizar.sh` / `analizar.ps1` | ✅ Implementados y probados |
-| `monitorear.ps1` / `monitorear.sh` | ✅ Implementados y probados |
-| `respaldo.ps1` / `respaldo.sh` (tarea programada y restauración) | ✅ Implementados y probados |
-| Gráficos pixel art (mazmorra, caballero, mago, arquero, llave, escudo, antorcha, puerta) | ✅ Implementados (`recursos/imagenes/imagenes/`) |
-| Música y efectos de sonido | ✅ Implementados (`recursos/imagenes/sonidos/`) |
-| Preguntas entre niveles | ✅ Implementadas (4 preguntas) |
-| Documento técnico final | ✅ [`documentacion/Documento_Tecnico_Final_G5.pdf`](documentacion/Documento_Tecnico_Final_G5.pdf) |
+| Lógica de detección y estado seguro (`scr_deadlock`) | Implementada y probada (2 y 3 procesos) |
+| Juego en GameMaker (menú, 4 niveles, asignación, mensajes, puntos, victoria/derrota) | Implementado. Ver capturas en `pruebas/capturas/` |
+| Nivel 3 de prevención (regla del orden) | Implementado |
+| Nivel 4 con 3 procesos y 3 recursos (algoritmo del banquero) | Implementado |
+| Animación de los personajes hacia la salida | Implementada |
+| Exportación del escenario a archivo | Implementada |
+| `analizar.sh` / `analizar.ps1` | Implementados y probados |
+| `monitorear.ps1` / `monitorear.sh` | Implementados y probados |
+| `respaldo.ps1` / `respaldo.sh` (tarea programada y restauración) | Implementados y probados |
+| Gráficos pixel art (mazmorra, caballero, mago, arquero, llave, escudo, antorcha, puerta) | Implementados (`recursos/imagenes/imagenes/`) |
+| Música y efectos de sonido | Implementados (`recursos/imagenes/sonidos/`) |
+| Preguntas entre niveles | Implementadas (4 preguntas) |
+| Documento técnico final | [`documentacion/Documento_Tecnico_Final_G5.pdf`](documentacion/Documento_Tecnico_Final_G5.pdf) |
 
 ### Trabajo futuro
 
 - Ejecutar los scripts de análisis desde el propio juego (en GameMaker requiere extensiones externas).
 - Agregar recursos con varias unidades (por ejemplo, 2 llaves) para ampliar el algoritmo del banquero.
-
-
