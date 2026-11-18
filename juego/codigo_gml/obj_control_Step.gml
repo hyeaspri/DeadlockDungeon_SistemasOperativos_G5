@@ -67,6 +67,24 @@ if (keyboard_check_pressed(ord("R"))) {
 // ------------- Analisis del estado actual (algoritmo SO) -------------
 analisis = so_analizar(asignado, maximo, total, terminado, num_proc, num_rec);
 
+// ------------- Animacion: los procesos terminados caminan a la salida --
+for (var p = 0; p < num_proc; p++) {
+    if (terminado[p]) {
+        var _dist = point_distance(anim_x[p], anim_y[p], puerta_x, puerta_y);
+        if (_dist > 8) {
+            var _dir = point_direction(anim_x[p], anim_y[p], puerta_x, puerta_y);
+            anim_x[p] += lengthdir_x(min(7, _dist), _dir);
+            anim_y[p] += lengthdir_y(min(7, _dist), _dir);
+        } else {
+            anim_alfa[p] = max(0, anim_alfa[p] - 0.05);   // desaparece por la puerta
+        }
+    } else {
+        anim_x[p] = proc_x[p];
+        anim_y[p] = proc_y[p];
+        anim_alfa[p] = 1;
+    }
+}
+
 // --------------------------- CLIC DEL MOUSE --------------------------
 if (mouse_check_button_pressed(mb_left)) {
     var _mx = mouse_x;
@@ -111,7 +129,7 @@ if (mouse_check_button_pressed(mb_left)) {
             }
             else {
                 // Recurso ocupado: expropiar (recuperacion del interbloqueo)
-                if (nivel == 3) {
+                if (nivel >= 3) {
                     sonido(snd_error);
                     mensaje = "Aqui no se permite expropiar. Debes PREVENIR el interbloqueo.\nPulsa R para reiniciar el nivel.";
                 } else {

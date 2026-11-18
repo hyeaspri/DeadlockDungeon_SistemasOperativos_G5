@@ -2,7 +2,7 @@
 /// =====================================================================
 /// Dibuja la mazmorra (pixel art), los procesos, los recursos y los
 /// mensajes. Necesita estos sprites: spr_fondo, spr_caballero,
-/// spr_mago, spr_llave, spr_escudo, spr_puerta.
+/// spr_mago, spr_arquero, spr_llave, spr_escudo, spr_antorcha, spr_puerta.
 /// Habitacion: 1280 x 660.
 /// (Los textos no llevan tildes porque la fuente por defecto puede
 ///  no mostrarlas.)
@@ -12,8 +12,8 @@ var _w = room_width;
 var _h = room_height;
 var _oro = make_colour_rgb(235, 190, 60);
 var _panel = make_colour_rgb(20, 14, 24);
-var _spr_proc = [spr_caballero, spr_mago];
-var _spr_rec  = [spr_llave, spr_escudo];
+var _spr_proc = [spr_caballero, spr_mago, spr_arquero];
+var _spr_rec  = [spr_llave, spr_escudo, spr_antorcha];
 
 // --------------------------- FONDO -----------------------------------
 draw_sprite(spr_fondo, 0, 0, 0);
@@ -32,16 +32,17 @@ if (estado_juego == "menu") {
     texto_sombra(_w / 2, 185, "La mazmorra de los recursos", c_white, 2);
 
     // Personajes y recursos (los pies quedan en y = 390)
-    draw_sprite(spr_caballero, 0, _w / 2 - 210 - sprite_get_width(spr_caballero) / 2, 390 - sprite_get_height(spr_caballero));
-    draw_sprite(spr_llave,     0, _w / 2 - 70 - sprite_get_width(spr_llave) / 2, 330 - sprite_get_height(spr_llave) / 2);
-    draw_sprite(spr_escudo,    0, _w / 2 + 70 - sprite_get_width(spr_escudo) / 2, 330 - sprite_get_height(spr_escudo) / 2);
-    draw_sprite(spr_mago,      0, _w / 2 + 210 - sprite_get_width(spr_mago) / 2, 390 - sprite_get_height(spr_mago));
+    draw_sprite(spr_caballero, 0, _w / 2 - 300 - sprite_get_width(spr_caballero) / 2, 390 - sprite_get_height(spr_caballero));
+    draw_sprite(spr_llave,     0, _w / 2 - 150 - sprite_get_width(spr_llave) / 2, 335 - sprite_get_height(spr_llave) / 2);
+    draw_sprite(spr_arquero,   0, _w / 2 - sprite_get_width(spr_arquero) / 2, 390 - sprite_get_height(spr_arquero));
+    draw_sprite(spr_escudo,    0, _w / 2 + 150 - sprite_get_width(spr_escudo) / 2, 335 - sprite_get_height(spr_escudo) / 2);
+    draw_sprite(spr_mago,      0, _w / 2 + 300 - sprite_get_width(spr_mago) / 2, 390 - sprite_get_height(spr_mago));
 
     texto_sombra(_w / 2, 430, "Proyecto de Sistemas Operativos - Interbloqueos (Deadlocks)", c_white, 1.2);
-    texto_sombra(_w / 2, 460, "Caballero y Mago = procesos     Llave y Escudo = recursos compartidos", c_ltgray, 1.2);
+    texto_sombra(_w / 2, 460, "Caballero, Mago y Arquero = procesos     Llave, Escudo y Antorcha = recursos", c_ltgray, 1.2);
     texto_sombra(_w / 2, 530, "Presiona ENTER o haz clic para comenzar", c_lime, 1.6);
     texto_sombra(_w / 2, 580, "M = musica on / off", c_gray, 1);
-    texto_sombra(_w / 2, 620, "UMB - Grupo 1 - Heidy Valeria Asprilla Rubiano y Daniela Rodriguez Reyes", c_ltgray, 1);
+    texto_sombra(_w / 2, 620, "UMB - Grupo 5 - Heidy Asprilla y Daniela Rodriguez", c_ltgray, 1);
 
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
@@ -56,13 +57,14 @@ if (estado_juego == "fin") {
     draw_set_alpha(1);
 
     draw_sprite(spr_puerta, 0, _w / 2 - sprite_get_width(spr_puerta) / 2, 60);
-    draw_sprite(spr_caballero, 0, _w / 2 - 170 - sprite_get_width(spr_caballero) / 2, 180 - sprite_get_height(spr_caballero));
+    draw_sprite(spr_caballero, 0, _w / 2 - 300 - sprite_get_width(spr_caballero) / 2, 180 - sprite_get_height(spr_caballero));
+    draw_sprite(spr_arquero, 0, _w / 2 - 160 - sprite_get_width(spr_arquero) / 2, 180 - sprite_get_height(spr_arquero));
     draw_sprite(spr_mago, 0, _w / 2 + 170 - sprite_get_width(spr_mago) / 2, 180 - sprite_get_height(spr_mago));
 
     texto_sombra(_w / 2, 260, "VICTORIA!", c_lime, 4);
-    texto_sombra(_w / 2, 330, "Ambos procesos salieron de la mazmorra sin interbloqueo.", c_white, 1.5);
-    texto_sombra(_w / 2, 380, "Puntuacion final: " + string(puntos) + " / 360", _oro, 2);
-    texto_sombra(_w / 2, 420, "Preguntas acertadas: " + string(aciertos) + " / 3", c_white, 1.3);
+    texto_sombra(_w / 2, 330, "Todos los procesos salieron de la mazmorra sin interbloqueo.", c_white, 1.5);
+    texto_sombra(_w / 2, 380, "Puntuacion final: " + string(puntos) + " / " + string(num_niveles * 120), _oro, 2);
+    texto_sombra(_w / 2, 420, "Preguntas acertadas: " + string(aciertos) + " / " + string(num_niveles), c_white, 1.3);
     texto_sombra(_w / 2, 470, "Presiona R o ENTER para volver al menu", c_ltgray, 1.3);
 
     draw_set_halign(fa_left);
@@ -143,12 +145,12 @@ texto_sombra(_w / 2, 136, "SALIDA", _oro, 1);
 draw_set_alpha(0.7);
 draw_set_colour(_panel);
 draw_rectangle(10, 8, 440, 88, false);
-draw_rectangle(_w - 470, 8, _w - 10, 88, false);
+draw_rectangle(_w - 540, 8, _w - 10, 88, false);
 draw_rectangle(_w / 2 - 380, 150, _w / 2 + 380, 205, false);
 draw_set_alpha(1);
 draw_set_colour(_oro);
 draw_rectangle(10, 8, 440, 88, true);
-draw_rectangle(_w - 470, 8, _w - 10, 88, true);
+draw_rectangle(_w - 540, 8, _w - 10, 88, true);
 
 // Nivel y puntos (izquierda)
 draw_set_halign(fa_left);
@@ -160,7 +162,11 @@ texto_sombra(22, 62, "Expropiaciones: " + string(expropiaciones) + "   Interbloq
 // Estado del sistema (derecha) - algoritmo de seguridad
 draw_set_halign(fa_right);
 var _disp = so_disponibles(asignado, total, num_proc, num_rec);
-texto_sombra(_w - 22, 16, "Disponibles: Llave=" + string(_disp[0]) + "  Escudo=" + string(_disp[1]), c_white, 1);
+var _txt_disp = "Disponibles:";
+for (var r = 0; r < num_rec; r++) {
+    _txt_disp += "  " + nombres_rec[r] + "=" + string(_disp[r]);
+}
+texto_sombra(_w - 22, 16, _txt_disp, c_white, 1);
 if (analisis.seguro) {
     texto_sombra(_w - 22, 40, "Estado del sistema: SEGURO", c_lime, 1);
     texto_sombra(_w - 22, 62, "Secuencia segura: " + so_texto_secuencia(analisis.secuencia, nombres_proc), c_lime, 1);
@@ -182,17 +188,19 @@ texto_sombra(_w / 2, libre_y[0] - 40, "Recursos libres", c_ltgray, 1);
 for (var p = 0; p < num_proc; p++) {
     var _px = proc_x[p];
     var _py = proc_y[p];
-    var _alfa = 1;
-    if (terminado[p]) _alfa = 0.35;
+    // Posicion animada: si el proceso termino, camina hacia la salida
+    var _ax = anim_x[p];
+    var _ay = anim_y[p];
+    var _alfa = anim_alfa[p];
 
     // Sombra en el piso y sprite del personaje
     draw_set_alpha(0.4 * _alfa);
     draw_set_colour(c_black);
-    draw_ellipse(_px - 45, _py + 55, _px + 45, _py + 75, false);
+    draw_ellipse(_ax - 45, _ay + 55, _ax + 45, _ay + 75, false);
     draw_set_alpha(1);
-    // Los pies del personaje quedan en _py + 62
+    // Los pies del personaje quedan en _ay + 62
     var _spr = _spr_proc[p];
-    draw_sprite_ext(_spr, 0, _px - sprite_get_width(_spr) / 2, _py + 62 - sprite_get_height(_spr), 1, 1, 0, c_white, _alfa);
+    draw_sprite_ext(_spr, 0, _ax - sprite_get_width(_spr) / 2, _ay + 62 - sprite_get_height(_spr), 1, 1, 0, c_white, _alfa);
 
     // Nombre y datos del proceso
     texto_sombra(_px, _py + 82, nombres_proc[p] + " (P" + string(p) + ")", c_white, 1.2);
@@ -254,7 +262,7 @@ if (estado_juego == "derrota") {
 } else {
     draw_set_colour(c_white);
 }
-draw_text_ext(_w / 2, 488, mensaje, 18, _w - 120);
+draw_text_ext(_w / 2, 484, mensaje, 16, _w - 120);
 
 // --------------------------- BOTON -----------------------------------
 var _texto_boton = "EJECUTAR";
