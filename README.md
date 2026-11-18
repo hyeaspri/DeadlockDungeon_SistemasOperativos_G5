@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistemas Operativos – Universidad Manuela Beltrán (UMB)  
 **Grupo:** 5  
-**Estado:** ✅ Versión final (videojuego en GameMaker)
+**Estado:** Versión final (videojuego en GameMaker)
 
 ### Integrantes
 
